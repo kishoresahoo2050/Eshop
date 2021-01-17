@@ -1,0 +1,36 @@
+{% extends 'store/base.htm' %}
+{% block title %} Home {% endblock title %}
+{% block body %}
+<div class="container-fluid mt-3">
+   <div class="row">
+       <!-- fillter -->
+    <div class="col-lg-3">
+        <div class="list-group">
+            <a href="/" class="list-group-item list-group-item-action">All Products</a>   
+            {% for category in all_cate %}
+            <a href="/?category={{category.id}}" class="list-group-item list-group-item-action">{{category.name}}</a>   
+            {% endfor %}       
+        </div>
+    </div>
+    <!-- fillter -->
+    <div id="products" class="col-lg-9">
+        <div class="row mx-auto">
+            {% if all_prod %}
+            {% for product in all_prod %}
+            <div class="card mx-auto mb-3" style="width: 18rem;">
+                <img src="{{product.img.url}}" class="card-img-top" alt="{{product.name}}">
+                <div class="card-body">
+                  <h5 class="card-title">{{product.name}}</h5>
+                  <p class="card-text">&#8377;{{product.price}}</p>
+                  <a href="#" class="btn btn-light border btn-sm">Add To Cart</a>
+                </div>
+              </div>
+            {% endfor %}
+            {% else %}
+            <span class="text-center text-danger">No Products Availabel Yet.</span>
+            {% endif %}
+        </div>
+    </div>
+   </div>
+</div>
+{% endblock body %}
