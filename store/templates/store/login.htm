@@ -1,5 +1,5 @@
 {% extends 'store/base.htm' %}
-{% block title %} Signup {% endblock title %}
+{% block title %} Login {% endblock title %}
 {% block body %}
 <div class="container">
 
@@ -14,26 +14,14 @@
 
 
         <div class="col-lg-5 mx-auto border rounded pt-4">
-            <h3 class="alert alert-light border rounded text-center">Create An Account </h3>
+            <h3 class="alert alert-light border rounded text-center">Login</h3>
             <form action="" method="post" novalidate>
                 {% csrf_token %}
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" name="name" id="name" class="form-control" placeholder="Enter Your Name"
-                        value="{{form.name}}">
-                    {% if errors.name %} <span class="text-danger">{{errors.name}}</span> {% endif %}
-                </div>
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input type="email" name="email" id="email" class="form-control" placeholder="Enter Your Email"
                         value="{{form.email}}">
                     {% if errors.email %} <span class="text-danger">{{errors.email}}</span> {% endif %}
-                </div>
-                <div class="form-group">
-                    <label for="pnum">Phone</label>
-                    <input type="number" name="pnum" id="pnum" class="form-control" placeholder="Enter Your Phone"
-                        value="{{form.pnum}}">
-                    {% if errors.pnum %} <span class="text-danger">{{errors.pnum}}</span> {% endif %}
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
@@ -42,8 +30,8 @@
                     {% if errors.password %} <span class="text-danger">{{errors.password}}</span> {% endif %}
                 </div>
                 <div class="form-group">
-                    <button class="btn btn-primary btn-sm">Create An Account</button><br>
-                    <a href="{% url 'login' %}" class="text-align-right">Back To Login</a>
+                    <button class="btn btn-primary btn-sm">Login</button><br>
+                    <a href="{% url 'signup' %}" class="text-align-right">Create An Account</a>
                 </div>
             </form>
         </div>
