@@ -1,6 +1,7 @@
 {% extends 'store/base.htm' %}
 {% block title %} Cart {% endblock title %}
 {% block body %}
+{% load static %}
 {% load cart_filter %}
 <div class="container">
    <div class="border rounded p-4 m-4">
@@ -39,9 +40,48 @@
        </table>
        <hr>
        <div class="m-3 p-3">
-           <a href="#" class="btn btn-outline-success border rounded float-right col-lg-3">Check out</a>
+           <a href="javascript:void(0)" class="btn btn-outline-success border rounded float-right col-lg-3" data-toggle="modal" data-target="#exampleModal">Check out</a>
        </div>
+       {% else %}
+        <img src="{% static '/img/cart_empty.png' %}" alt="cart_empty" class="img-fluid">
        {% endif %}
    </div>
 </div>
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Check Out Form</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form action="" method="post">
+            <div class="modal-body">
+            <div class="m-3 p-2">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="pnum">Phone</label>
+                        <input type="number" name="pnum" id="pnum" class="form-control" placeholder="Enter Phone Number" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <textarea name="address" id="address"class="form-control" placeholder="Enter Address" required></textarea>
+                    </div>
+                    
+                
+            </div>
+            </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-sm btn-outline-info">Check Out</button>
+        </div>
+    </form>
+      </div>
+    </div>
+  </div>
+<!-- Modal -->
 {% endblock body %}
