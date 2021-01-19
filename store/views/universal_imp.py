@@ -1,3 +1,3 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from store.models.customer import Customer
 from django.contrib import messages
