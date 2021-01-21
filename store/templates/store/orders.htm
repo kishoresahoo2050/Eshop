@@ -1,0 +1,56 @@
+{% extends 'store/base.htm' %}
+{% block title %}All Orders {% endblock title %}
+{% block body %}
+{% load static %}
+{% load cart_filter %}
+<div class="container">
+   <div class="border rounded p-4 m-4">
+      
+    {% if All_orders %}
+    <h3>Your Orders:</h3>
+       <table class="table">
+           <thead>
+               <tr>
+                   <th>Slno.</th>
+                   <th>Image</th>
+                   <th>name</th>
+                   <th>Date</th>
+                   <th>Price</th>
+                   <th>Qty</th>
+                   <th>Total</th>
+                   <th>Status</th>
+               </tr>
+           </thead>
+           <tbody>
+              
+               {% for order in All_orders %}
+               <tr>
+                   <td scope="row">{{ forloop.counter }}</td>
+                   <td><img src="{{order.product.img.url}}" class="rounded border" alt="{{order.product.name}}" width="50px" height="50px"></td>
+                   <td>{{order.product.name}}</td>
+                   <td>{{order.date}}</td>
+                   <td>&#8377;{{order.price}}</td>
+                   <td>{{order.qty}}</td>
+                   <td>&#8377;{{order.qty|multiply:order.price}}</td>
+                    <td>
+                        {% if order.status == True %}
+                        <a href="#" class="badge badge-success">completed</a>
+                        {% else %}
+                        <a href="#" class="badge badge-warning">pending</a>
+                        {% endif %}
+                    </td>
+               </tr>
+
+               {% endfor %}
+           </tbody>
+        
+       </table>
+    
+       {% else %}
+        <img src="{% static '/img/ordernotfound.jpg' %}" alt="cart_empty" class="img-fluid">
+       {% endif %}
+   </div>
+</div>
+
+
+{% endblock body %}

@@ -13,4 +13,4 @@ class Orders(models.Model):
     address  = models.TextField()
     phone    = models.BigIntegerField()
     date     = models.DateField(default=datetime.datetime.today)
-    
+    status   = models.BooleanField(default=False)

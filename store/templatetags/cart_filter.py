@@ -33,6 +33,11 @@ def Total_price(all_product,cart):
     for products in all_product:
         total +=Product_cart_price(products,cart)
     return total
+
+
+@register.filter(name = 'multiply')
+def Multily_num(qty,price):
+    return qty*price
     
 
     
